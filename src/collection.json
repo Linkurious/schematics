@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "stitch-component": {
+      "description": "Generate a component for Stitch.",
+      "factory": "./stitch-component/index#stitchComponent",
+      "schema": "./stitch-component/schema.json"
+    }
+  }
+}
