@@ -4,7 +4,7 @@
   "description": "Linkurious schematics",
   "scripts": {
     "prepare": "tsc -b",
-    "build": "tsc -b -p tsconfig.json",
+    "build": "tsc -b tsconfig.json",
     "build:watch": "tsc -p tsconfig.json --watch",
     "test:unit": "jasmine src/**/*_spec.js",
     "test": "npm run build && jasmine src/**/*_spec.js",
