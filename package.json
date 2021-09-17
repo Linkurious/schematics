@@ -6,7 +6,7 @@
     "prepare": "tsc -b",
     "build": "tsc -b tsconfig.json",
     "build:watch": "tsc -p tsconfig.json --watch",
-    "test:unit": "jasmine src/**/*_spec.js",
+    "test:unit": "nyc --reporter=text-summary --reporter=cobertura --report-dir=reports  mocha -r ts-node/register/transpile-only --reporter mocha-multi-reporters --reporter-options configFile=.test-reporters.json src/**/*_spec.ts",
     "test": "./node_modules/.bin/mocha -r ts-node/register/transpile-only src/**/*_spec.ts",
     "lint": "eslint --fix --ext .ts .",
     "lint:ci": "eslint -f checkstyle -o reports/checkstyle.xml --ext .ts ."
