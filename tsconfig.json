@@ -16,8 +16,9 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strictNullChecks": true,
+    "strict": true,
     "target": "es6",
-    "types": ["jasmine", "node"]
+    "types": ["node"]
   },
   "include": ["src/**/*"],
   "exclude": ["src/*/files/**/*",
