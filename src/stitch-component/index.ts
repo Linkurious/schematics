@@ -11,7 +11,6 @@ import {
   noop,
   Rule,
   SchematicContext,
-  SchematicsException,
   Source,
   template,
   Tree,
@@ -33,7 +32,7 @@ export interface Schema {
 function updatePublicAPI(tree: Tree, options: Schema): void {
   const buffer = tree.read('public-api.ts');
   if (buffer === null) {
-    throw new SchematicsException('file not found');
+    return;
   }
   let sourceFile = buffer.toString();
   let template = `export {S${classify(options.name)}Module} from './${options.type}s/${camelize(
