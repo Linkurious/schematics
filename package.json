@@ -25,6 +25,7 @@
     }
   },
   "files": [
+    "src/**/*.ts",
     "src/**/*.js",
     "src/**/*.d.ts",
     "src/**/*.less",
