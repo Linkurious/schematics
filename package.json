@@ -25,10 +25,11 @@
     }
   },
   "files": [
-    "**/*.js",
-    "**/*.d.ts",
-    "**/*.less",
-    "**/*.json"
+    "src/**/*.js",
+    "src/**/*.d.ts",
+    "src/**/*.less",
+    "src/**/*.html",
+    "src/**/*.json"
   ],
   "author": "",
   "license": "MIT",
