@@ -7,22 +7,44 @@
     "build": "tsc -b -p tsconfig.json",
     "build:watch": "tsc -p tsconfig.json --watch",
     "test:unit": "jasmine src/**/*_spec.js",
-    "test": "npm run build && jasmine src/**/*_spec.js"
+    "test": "npm run build && jasmine src/**/*_spec.js",
+    "lint": "eslint --fix --ext .ts .",
+    "lint:ci": "eslint -f checkstyle -o reports/checkstyle.xml --ext .ts ."
   },
   "keywords": [
     "schematics"
   ],
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "[ -n \"$BUILD_ID\" ] && exit 0 || lint-staged"
+    }
+  },
   "author": "",
   "license": "MIT",
   "schematics": "./src/collection.json",
   "devDependencies": {
+    "@angular-devkit/core": "12.2.4",
+    "@angular-devkit/schematics": "12.2.4",
     "@schematics/angular": "12.2.5",
     "@types/jasmine": "3.8.0",
     "@types/node": "12.11.1",
+    "@typescript-eslint/eslint-plugin": "4.3.0",
+    "@typescript-eslint/parser": "4.3.0",
+    "@typescript-eslint/typescript-estree": "4.31.1",
+    "eslint": "7.6.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "husky": "1.2.0",
     "jasmine": "3.5.0",
-    "@angular-devkit/core": "12.2.4",
-    "@angular-devkit/schematics": "12.2.4",
-    "typescript": "4.3.2"
+    "lint-staged": "10.5.1",
+    "prettier": "2.1.2",
+    "typescript": "4.0.8"
   },
   "dependencies": {}
 }
