@@ -29,9 +29,12 @@ export interface Schema {
 /**
  * Export the generated module and service (if needed) in the public-api barrel file
  */
-function updatePublicAPI(tree: Tree, options: Schema): void {
+function updatePublicAPI(tree: Tree, options: Schema, context: SchematicContext): void {
   const buffer = tree.read('public-api.ts');
   if (buffer === null) {
+    context.logger.warn(
+      'Wasn\'t able to find "public-api" file. You will have to update it manually.'
+    );
     return;
   }
   let sourceFile = buffer.toString();
@@ -67,7 +70,7 @@ export function stitchComponent(options: Schema): Rule {
       template({...options, ...strings}),
       move(elementPath)
     ]);
-    updatePublicAPI(tree, options);
+    updatePublicAPI(tree, options, context);
     createStory(tree, options);
     return mergeWith(transformedSource)(tree, context);
   };
