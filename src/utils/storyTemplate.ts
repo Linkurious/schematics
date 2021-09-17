@@ -1,6 +1,6 @@
 import {camelize, capitalize, classify, dasherize} from '@angular-devkit/core/src/utils/strings';
 
-import {Schema} from '../stitch-component/schema';
+import {Schema} from '../stitch-component';
 
 export const parseStoryTemplate = function (options: Schema): string {
   return `
