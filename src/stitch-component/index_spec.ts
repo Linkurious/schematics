@@ -1,5 +1,9 @@
+'use strict';
+
+import 'mocha';
 import * as path from 'path';
 
+import {expect} from 'chai';
 import {SchematicTestRunner} from '@angular-devkit/schematics/testing';
 import {Tree} from '@angular-devkit/schematics';
 
@@ -11,7 +15,7 @@ describe('stitch-component', () => {
     const tree = await runner
       .runSchematicAsync('stitch-component', {name: 'test'}, Tree.empty())
       .toPromise();
-    expect(tree.files.length).toEqual(5);
+    expect(tree.files.length).to.eql(5);
   });
 
   it('create a basic layout', async () => {
@@ -19,8 +23,8 @@ describe('stitch-component', () => {
     const tree = await runner
       .runSchematicAsync('stitch-component', {name: 'test', type: 'layout'}, Tree.empty())
       .toPromise();
-    expect(tree.files.length).toEqual(5);
-    expect(tree.files[0]).toEqual('/stories/layouts/test.stories.ts');
+    expect(tree.files.length).to.eql(5);
+    expect(tree.files[0]).to.eql('/stories/layouts/test.stories.ts');
   });
 
   it('add a service to the component', async () => {
@@ -28,6 +32,6 @@ describe('stitch-component', () => {
     const tree = await runner
       .runSchematicAsync('stitch-component', {name: 'test', service: true}, Tree.empty())
       .toPromise();
-    expect(tree.files.length).toEqual(6);
+    expect(tree.files.length).to.eql(6);
   });
 });
