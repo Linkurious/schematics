@@ -30,7 +30,7 @@ export interface Schema {
  * Export the generated module and service (if needed) in the public-api barrel file
  */
 function updatePublicAPI(tree: Tree, options: Schema, context: SchematicContext): void {
-  const buffer = tree.read('public-api.ts');
+  const buffer = tree.read('./src/public-api.ts');
   if (buffer === null) {
     context.logger.warn(
       'Wasn\'t able to find "public-api" file. You will have to update it manually.'
@@ -63,7 +63,7 @@ function createStory(tree: Tree, options: Schema): void {
 export function stitchComponent(options: Schema): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const sourceTemplates = url(`./files`);
-    const elementPath = normalize(`${options.type}s`);
+    const elementPath = normalize(`./src/${options.type}s`);
 
     const transformedSource: Source = apply(sourceTemplates, [
       options.service ? noop() : filter((path) => !path.endsWith('service.ts')),
