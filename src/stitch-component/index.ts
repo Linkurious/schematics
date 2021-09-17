@@ -21,7 +21,11 @@ import {camelize, classify} from '@angular-devkit/core/src/utils/strings';
 
 import {parseStoryTemplate} from '../utils/storyTemplate';
 
-import {Schema} from './schema';
+export interface Schema {
+  name: string;
+  type: 'component' | 'layout';
+  service: boolean;
+}
 
 /**
  * Export the generated module and service (if needed) in the public-api barrel file
