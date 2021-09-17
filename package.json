@@ -7,7 +7,7 @@
     "build": "tsc -b tsconfig.json",
     "build:watch": "tsc -p tsconfig.json --watch",
     "test:unit": "jasmine src/**/*_spec.js",
-    "test": "npm run build && jasmine src/**/*_spec.js",
+    "test": "npm run build && istanbul cover --include-all-sources jasmine src/**/*_spec.js --code-coverage",
     "lint": "eslint --fix --ext .ts .",
     "lint:ci": "eslint -f checkstyle -o reports/checkstyle.xml --ext .ts ."
   },
@@ -41,6 +41,7 @@
     "eslint-plugin-import": "2.22.0",
     "eslint-plugin-prettier": "3.1.4",
     "husky": "1.2.0",
+    "istanbul": "0.4.5",
     "jasmine": "3.5.0",
     "lint-staged": "10.5.1",
     "prettier": "2.1.2",
