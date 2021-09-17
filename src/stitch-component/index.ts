@@ -47,7 +47,7 @@ function updatePublicAPI(tree: Tree, options: Schema, context: SchematicContext)
     )}/service';`;
   }
   sourceFile += template;
-  tree.overwrite('public-api.ts', sourceFile);
+  tree.overwrite('./src/public-api.ts', sourceFile);
 }
 
 /**
