@@ -24,6 +24,12 @@
       "pre-commit": "[ -n \"$BUILD_ID\" ] && exit 0 || lint-staged"
     }
   },
+  "files": [
+    "**/*.js",
+    "**/*.d.ts",
+    "**/*.less",
+    "**/*.json"
+  ],
   "author": "",
   "license": "MIT",
   "schematics": "./src/collection.json",
