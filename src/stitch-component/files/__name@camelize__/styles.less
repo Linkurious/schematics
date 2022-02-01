@@ -1,11 +1,17 @@
-/*@import "./../../tokens/animations";  */
-/*@import "./../../tokens/colors";  */
-/*@import "./../../tokens/spacing";  */
-/*@import "./../../tokens/typography";  */
-/*@import "./../../tokens/utils";  */
+/*@import "../../styles/tokens/animations";  */
+/*@import "../../styles/tokens/colors";  */
+/*@import "../../styles/tokens/spacing";  */
+/*@import "../../styles/tokens/typography";  */
+/*@import "../../styles/tokens/utils";  */
 
 :host {
+  box-sizing: border-box;
 
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
 }
 
 .s-<%= dasherize(name) %> {
