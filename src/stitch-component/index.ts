@@ -38,7 +38,7 @@ function updatePublicAPI(tree: Tree, options: Schema, context: SchematicContext)
     return;
   }
   let sourceFile = buffer.toString();
-  let template = `export {S${classify(options.name)}Module} from './${options.type}s/${camelize(
+  let template = `\nexport {S${classify(options.name)}Module} from './${options.type}s/${camelize(
     options.name
   )}/module';\nexport {S${classify(options.name)}Component} from './${options.type}s/${camelize(
     options.name
