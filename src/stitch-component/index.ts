@@ -46,7 +46,7 @@ function updatePublicAPI(tree: Tree, options: Schema, context: SchematicContext)
   if (options.service) {
     template += `\nexport {S${classify(options.name)}Service} from './${options.type}s/${camelize(
       options.name
-    )}/service';`;
+    )}/service';\n`;
   }
   sourceFile += template;
   tree.overwrite('./src/public-api.ts', sourceFile);
