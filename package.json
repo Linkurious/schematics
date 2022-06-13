@@ -1,6 +1,6 @@
 {
   "name": "@linkurious/schematics",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Linkurious schematics",
   "scripts": {
     "prepare": "tsc -b",
@@ -9,7 +9,10 @@
     "test:unit": "nyc --reporter=text-summary --reporter=cobertura --report-dir=reports  mocha -r ts-node/register/transpile-only --reporter mocha-multi-reporters --reporter-options configFile=.test-reporters.json src/**/*_spec.ts",
     "test": "./node_modules/.bin/mocha -r ts-node/register/transpile-only src/**/*_spec.ts",
     "lint": "eslint --fix --ext .ts .",
-    "lint:ci": "eslint -f checkstyle -o reports/checkstyle.xml --ext .ts ."
+    "lint:ci": "eslint -f checkstyle -o reports/checkstyle.xml --ext .ts .",
+    "bump:patch": "bump2version patch && npm version --no-git-tag-version patch",
+    "bump:minor": "bump2version minor && npm version --no-git-tag-version minor",
+    "bump:major": "bump2version major && npm version --no-git-tag-version major"
   },
   "keywords": [
     "schematics"
