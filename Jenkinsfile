@@ -3,6 +3,7 @@
 nodeJob {
   // General
   projectName = "linkurious/schematics"
+  podTemplateNames = ['jnlp-agent-node']
 
   //testing
   runUnitTests = true
