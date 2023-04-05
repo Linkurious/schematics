@@ -6,6 +6,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   selector: 's-<%= dasherize(name) %>',
   templateUrl: './template.html',
   styleUrls: ['./styles.less'],
+  standalone: true,
+  imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false
 })

@@ -20,7 +20,7 @@ export default {
     decorators: [
         withA11y,
         moduleMetadata({
-            imports: [S${classify(options.name)}Module]
+            imports: [S${classify(options.name)}Component]
         })
     ]
 };
