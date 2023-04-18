@@ -15,7 +15,7 @@ describe('stitch-component', () => {
     const tree = await runner
       .runSchematicAsync('stitch-component', {name: 'test'}, Tree.empty())
       .toPromise();
-    expect(tree.files.length).to.eql(5);
+    expect(tree.files.length).to.eql(4);
   });
 
   it('create a basic layout', async () => {
@@ -23,7 +23,7 @@ describe('stitch-component', () => {
     const tree = await runner
       .runSchematicAsync('stitch-component', {name: 'test', type: 'layout'}, Tree.empty())
       .toPromise();
-    expect(tree.files.length).to.eql(5);
+    expect(tree.files.length).to.eql(4);
     expect(tree.files[0]).to.eql('/stories/layouts/test.stories.ts');
   });
 
@@ -32,6 +32,6 @@ describe('stitch-component', () => {
     const tree = await runner
       .runSchematicAsync('stitch-component', {name: 'test', service: true}, Tree.empty())
       .toPromise();
-    expect(tree.files.length).to.eql(6);
+    expect(tree.files.length).to.eql(5);
   });
 });
