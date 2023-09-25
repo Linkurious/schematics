@@ -7,6 +7,7 @@ nodeJob {
 
   //testing
   runUnitTests = true
+  runE2eTests = false  
 
   createGitTag = true
   gitTagPrefix = 'v'
