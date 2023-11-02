@@ -5,7 +5,6 @@ import {Schema} from '../stitch-component';
 export const parseStoryTemplate = function (options: Schema): string {
   return `
 import {moduleMetadata} from '@storybook/angular';
-import {withA11y} from '@storybook/addon-a11y';
 
 import {S${classify(options.name)}Component} from '../../src/components/${camelize(
     options.name
@@ -15,7 +14,6 @@ export default {
     title: '${capitalize(options.name)}',
     component: S${classify(options.name)}Component,
     decorators: [
-        withA11y,
         moduleMetadata({
             imports: [S${classify(options.name)}Component]
         })
