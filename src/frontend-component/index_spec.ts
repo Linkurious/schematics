@@ -10,9 +10,7 @@ const collectionPath = path.join(__dirname, '../collection.json');
 describe('frontend-component', () => {
   it('create a basic component', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = await runner
-      .runSchematicAsync('frontend-component', {name: 'test'}, Tree.empty())
-      .toPromise();
+    const tree = await runner.runSchematic('frontend-component', {name: 'test'}, Tree.empty());
     expect(tree.files).to.eql([
       '/test/test.component.spec.ts',
       '/test/test.component.ts',
@@ -23,13 +21,11 @@ describe('frontend-component', () => {
 
   it('Should generate the correct content for component file', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = await runner
-      .runSchematicAsync(
-        'frontend-component',
-        {name: 'test', service: true, controller: true},
-        Tree.empty()
-      )
-      .toPromise();
+    const tree = await runner.runSchematic(
+      'frontend-component',
+      {name: 'test', service: true, controller: true},
+      Tree.empty()
+    );
     expect(tree.read('/test/test.component.ts')?.toString()).to.eql(
       "import {ChangeDetectionStrategy, Component} from '@angular/core';\n" +
         '\n' +
@@ -48,13 +44,11 @@ describe('frontend-component', () => {
 
   it('Should generate the correct content for component test file', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = await runner
-      .runSchematicAsync(
-        'frontend-component',
-        {name: 'test', service: true, controller: true},
-        Tree.empty()
-      )
-      .toPromise();
+    const tree = await runner.runSchematic(
+      'frontend-component',
+      {name: 'test', service: true, controller: true},
+      Tree.empty()
+    );
     expect(tree.read('/test/test.component.spec.ts')?.toString()).to.eql(
       'const testFunction = jest.fn();\n' +
         '\n' +
@@ -90,13 +84,11 @@ describe('frontend-component', () => {
 
   it('Should generate the correct content for styles file', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = await runner
-      .runSchematicAsync(
-        'frontend-component',
-        {name: 'test', service: true, controller: true},
-        Tree.empty()
-      )
-      .toPromise();
+    const tree = await runner.runSchematic(
+      'frontend-component',
+      {name: 'test', service: true, controller: true},
+      Tree.empty()
+    );
 
     expect(tree.read('/test/test.styles.less')?.toString()).to.eql(
       '/*@import "@linkurious/stitch/assets/tokens/animations";  */\n' +
@@ -123,13 +115,11 @@ describe('frontend-component', () => {
 
   it('Should generate the correct content for template file', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = await runner
-      .runSchematicAsync(
-        'frontend-component',
-        {name: 'test', service: true, controller: true},
-        Tree.empty()
-      )
-      .toPromise();
+    const tree = await runner.runSchematic(
+      'frontend-component',
+      {name: 'test', service: true, controller: true},
+      Tree.empty()
+    );
 
     expect(tree.read('/test/test.template.html')?.toString()).to.eql(
       '<div class="l-test">\n' + '\n' + '</div>\n'
@@ -138,9 +128,11 @@ describe('frontend-component', () => {
 
   it('create a component with service', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = await runner
-      .runSchematicAsync('frontend-component', {name: 'test', service: true}, Tree.empty())
-      .toPromise();
+    const tree = await runner.runSchematic(
+      'frontend-component',
+      {name: 'test', service: true},
+      Tree.empty()
+    );
     expect(tree.files).to.eql([
       '/test/test.component.spec.ts',
       '/test/test.component.ts',
@@ -182,9 +174,11 @@ describe('frontend-component', () => {
 
   it('create a component with controller', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = await runner
-      .runSchematicAsync('frontend-component', {name: 'test', controller: true}, Tree.empty())
-      .toPromise();
+    const tree = await runner.runSchematic(
+      'frontend-component',
+      {name: 'test', controller: true},
+      Tree.empty()
+    );
     expect(tree.files).to.eql([
       '/test/test.component.spec.ts',
       '/test/test.component.ts',
