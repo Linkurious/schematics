@@ -7,7 +7,7 @@ import {Tree} from '@angular-devkit/schematics';
 
 const collectionPath = path.join(__dirname, '../collection.json');
 
-describe.skip('frontend-component', () => {
+describe('frontend-component', () => {
   it('create a basic component', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
     const tree = await runner
