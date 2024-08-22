@@ -1,6 +1,6 @@
 {
   "name": "@linkurious/schematics",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Linkurious schematics",
   "scripts": {
     "prepare": "tsc -b",
