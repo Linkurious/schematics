@@ -14,10 +14,10 @@ describe.skip('frontend-component', () => {
       .runSchematicAsync('frontend-component', {name: 'test'}, Tree.empty())
       .toPromise();
     expect(tree.files).to.eql([
-      `${__dirname}/test/test.component.spec.ts`,
-      `${__dirname}/test/test.component.ts`,
-      `${__dirname}/test/test.styles.lees`,
-      `${__dirname}/test/test.template.html`
+      '/test/test.component.spec.ts',
+      '/test/test.component.ts',
+      '/test/test.styles.less',
+      '/test/test.template.html'
     ]);
   });
 
@@ -30,7 +30,7 @@ describe.skip('frontend-component', () => {
         Tree.empty()
       )
       .toPromise();
-    expect(tree.read(`/test/test.component.ts`)?.toString()).to.eql(
+    expect(tree.read('/test/test.component.ts')?.toString()).to.eql(
       "import {ChangeDetectionStrategy, Component} from '@angular/core';\n" +
         '\n' +
         '@Component({\n' +
@@ -55,14 +55,14 @@ describe.skip('frontend-component', () => {
         Tree.empty()
       )
       .toPromise();
-    expect(tree.read(`/test/test.component.spec.ts`)?.toString()).to.eql(
+    expect(tree.read('/test/test.component.spec.ts')?.toString()).to.eql(
       'const testFunction = jest.fn();\n' +
         '\n' +
         "import { ComponentFixture, TestBed } from '@angular/core/testing';\n" +
         '\n' +
         "import { TestComponent } from './test.component';\n" +
         '\n' +
-        "jest.mock('src/app/utilities/decorators/selector.ts`, () => ({\n" +
+        "jest.mock('src/app/utilities/decorators/selector.ts', () => ({\n" +
         '  selectStoreSignal: testFunction\n' +
         '}));\n' +
         '\n' +
@@ -131,7 +131,7 @@ describe.skip('frontend-component', () => {
       )
       .toPromise();
 
-    expect(tree.read(`/test/test.template.html`)?.toString()).to.eql(
+    expect(tree.read('/test/test.template.html')?.toString()).to.eql(
       '<div class="l-test">\n' + '\n' + '</div>\n'
     );
   });
@@ -142,14 +142,14 @@ describe.skip('frontend-component', () => {
       .runSchematicAsync('frontend-component', {name: 'test', service: true}, Tree.empty())
       .toPromise();
     expect(tree.files).to.eql([
-      `${__dirname}/test/test.component.spec.ts`,
-      `${__dirname}/test/test.component.ts`,
-      `${__dirname}/test/test.service.spec.ts`,
-      `${__dirname}/test/test.service.ts`,
-      `${__dirname}/test/test.styles.lees`,
-      `${__dirname}/test/test.template.html`
+      '/test/test.component.spec.ts',
+      '/test/test.component.ts',
+      '/test/test.service.spec.ts',
+      '/test/test.service.ts',
+      '/test/test.styles.less',
+      '/test/test.template.html'
     ]);
-    expect(tree.read(`/test/test.service.ts`)?.toString()).to.eql(
+    expect(tree.read('/test/test.service.ts')?.toString()).to.eql(
       "import {Injectable} from '@angular/core';\n" +
         '\n' +
         '@Injectable({\n' +
@@ -157,12 +157,12 @@ describe.skip('frontend-component', () => {
         '})\n' +
         'export class TestService {}\n'
     );
-    expect(tree.read(`/test/test.service.spec.ts`)?.toString()).to.eql(
+    expect(tree.read('/test/test.service.spec.ts')?.toString()).to.eql(
       'const testFunction = jest.fn();\n' +
         '\n' +
         "import { TestService } from './test.service';\n" +
         '\n' +
-        "jest.mock('src/app/utilities/decorators/selector.ts`, () => ({\n" +
+        "jest.mock('src/app/utilities/decorators/selector.ts', () => ({\n" +
         '  selectStoreSignal: testFunction\n' +
         '}));\n' +
         '\n' +
@@ -186,14 +186,14 @@ describe.skip('frontend-component', () => {
       .runSchematicAsync('frontend-component', {name: 'test', controller: true}, Tree.empty())
       .toPromise();
     expect(tree.files).to.eql([
-      `${__dirname}/test/test.component.spec.ts`,
-      `${__dirname}/test/test.component.ts`,
-      `${__dirname}/test/test.controller.spec.ts`,
-      `${__dirname}/test/test.controller.ts`,
-      `${__dirname}/test/test.styles.lees`,
-      `${__dirname}/test/test.template.html`
+      '/test/test.component.spec.ts',
+      '/test/test.component.ts',
+      '/test/test.controller.spec.ts',
+      '/test/test.controller.ts',
+      '/test/test.styles.less',
+      '/test/test.template.html'
     ]);
-    expect(tree.read(`/test/test.controller.ts`)?.toString()).to.eql(
+    expect(tree.read('/test/test.controller.ts')?.toString()).to.eql(
       "import {Injectable} from '@angular/core';\n" +
         '\n' +
         '@Injectable({\n' +
@@ -201,12 +201,12 @@ describe.skip('frontend-component', () => {
         '})\n' +
         'export class TestController {}\n'
     );
-    expect(tree.read(`/test/test.controller.spec.ts`)?.toString()).to.eql(
+    expect(tree.read('/test/test.controller.spec.ts')?.toString()).to.eql(
       'const testFunction = jest.fn();\n' +
         '\n' +
         "import { TestController } from './test.controller';\n" +
         '\n' +
-        "jest.mock('src/app/utilities/decorators/selector.ts`, () => ({\n" +
+        "jest.mock('src/app/utilities/decorators/selector.ts', () => ({\n" +
         '  selectStoreSignal: testFunction\n' +
         '}));\n' +
         '\n' +
