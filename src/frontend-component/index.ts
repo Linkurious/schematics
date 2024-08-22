@@ -26,8 +26,7 @@ export interface FrontendSchema {
 export function frontendComponent(options: FrontendSchema): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const sourceTemplates = url(`./files`);
-    const workingDirectory = tree.root.path;
-    const elementPath = normalize(`./${workingDirectory}`);
+    const elementPath = normalize(`./${__dirname}`);
 
     const transformedSource: Source = apply(sourceTemplates, [
       options.service
