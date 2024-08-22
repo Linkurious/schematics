@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "FrontendComponent",
+  "title": "Frontend Component Schema",
+  "type": "object",
+  "description": "Generate a Frontend component",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the component",
+      "x-prompt": "What is the name of the component?"
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of component",
+      "default": "component",
+      "enum": [
+        "component",
+        "popin"
+      ],
+      "x-prompt": "What is the type of your component?"
+    },
+    "service": {
+      "type": "boolean",
+      "description": "Is a service required",
+      "default": false,
+      "x-prompt": "Would it require a service?"
+    },
+    "controller": {
+      "type": "boolean",
+      "description": "Is a controller required",
+      "default": false,
+      "x-prompt": "Would it require a controller?"
+    }
+  },
+  "required": ["name"]
+}
