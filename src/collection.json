@@ -5,6 +5,11 @@
       "description": "Generate a component for Stitch.",
       "factory": "./stitch-component/index#stitchComponent",
       "schema": "./stitch-component/schema.json"
+    },
+    "frontend-component": {
+      "description": "Generate a component for Frontend repo.",
+      "factory": "./frontend-component/index#frontendComponent",
+      "schema": "./frontend-component/schema.json"
     }
   }
 }
