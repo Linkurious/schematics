@@ -30,8 +30,14 @@ export function frontendComponent(options: FrontendSchema): Rule {
     const elementPath = normalize(`./${workingDirectory}`);
 
     const transformedSource: Source = apply(sourceTemplates, [
-      options.service ? noop() : filter((path) => !path.endsWith('service.ts')),
-      options.controller ? noop() : filter((path) => !path.endsWith('controller.ts')),
+      options.service
+        ? noop()
+        : filter((path) => !(path.endsWith('service.ts') || path.endsWith('service.spec.ts'))),
+      options.controller
+        ? noop()
+        : filter(
+            (path) => !(path.endsWith('controller.ts') || path.endsWith('controller.spec.ts'))
+          ),
       template({...options, ...strings}),
       move(elementPath)
     ]);

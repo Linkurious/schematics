@@ -144,6 +144,7 @@ describe('frontend-component', () => {
     expect(tree.files).to.eql([
       '/test/test.component.spec.ts',
       '/test/test.component.ts',
+      '/test/test.service.spec.ts',
       '/test/test.service.ts',
       '/test/test.styles.less',
       '/test/test.template.html'
@@ -156,6 +157,27 @@ describe('frontend-component', () => {
         '})\n' +
         'export class TestService {}\n'
     );
+    expect(tree.read('/test/test.service.spec.ts')?.toString()).to.eql(
+      'const testFunction = jest.fn();\n' +
+        '\n' +
+        "import { TestService } from './test.service';\n" +
+        '\n' +
+        "jest.mock('src/app/utilities/decorators/selector.ts', () => ({\n" +
+        '  selectStoreSignal: testFunction\n' +
+        '}));\n' +
+        '\n' +
+        "describe('TestService', () => {\n" +
+        '  let testService: TestService;\n' +
+        '\n' +
+        '  beforeEach(async () => {\n' +
+        '    testService = new TestService();\n' +
+        '  });\n' +
+        '\n' +
+        "  it('should create', () => {\n" +
+        '    expect(testService).toBeTruthy();\n' +
+        '  });\n' +
+        '});\n'
+    );
   });
 
   it('create a component with controller', async () => {
@@ -166,6 +188,7 @@ describe('frontend-component', () => {
     expect(tree.files).to.eql([
       '/test/test.component.spec.ts',
       '/test/test.component.ts',
+      '/test/test.controller.spec.ts',
       '/test/test.controller.ts',
       '/test/test.styles.less',
       '/test/test.template.html'
@@ -177,6 +200,27 @@ describe('frontend-component', () => {
         "  providedIn: 'root'\n" +
         '})\n' +
         'export class TestController {}\n'
+    );
+    expect(tree.read('/test/test.controller.spec.ts')?.toString()).to.eql(
+      'const testFunction = jest.fn();\n' +
+        '\n' +
+        "import { TestController } from './test.controller';\n" +
+        '\n' +
+        "jest.mock('src/app/utilities/decorators/selector.ts', () => ({\n" +
+        '  selectStoreSignal: testFunction\n' +
+        '}));\n' +
+        '\n' +
+        "describe('TestController', () => {\n" +
+        '  let testController: TestController;\n' +
+        '\n' +
+        '  beforeEach(async () => {\n' +
+        '    testController = new TestController();\n' +
+        '  });\n' +
+        '\n' +
+        "  it('should create', () => {\n" +
+        '    expect(testController).toBeTruthy();\n' +
+        '  });\n' +
+        '});\n'
     );
   });
 });
