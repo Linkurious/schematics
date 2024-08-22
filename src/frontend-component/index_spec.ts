@@ -14,6 +14,7 @@ describe('frontend-component', () => {
       .runSchematicAsync('frontend-component', {name: 'test'}, Tree.empty())
       .toPromise();
     expect(tree.files).to.eql([
+      '/test/test.component.spec.ts',
       '/test/test.component.ts',
       '/test/test.styles.less',
       '/test/test.template.html'
@@ -42,6 +43,48 @@ describe('frontend-component', () => {
         '  preserveWhitespaces: false\n' +
         '})\n' +
         'export class TestComponent {}\n'
+    );
+  });
+
+  it('Should generate the correct content for component test file', async () => {
+    const runner = new SchematicTestRunner('schematics', collectionPath);
+    const tree = await runner
+      .runSchematicAsync(
+        'frontend-component',
+        {name: 'test', service: true, controller: true},
+        Tree.empty()
+      )
+      .toPromise();
+    expect(tree.read('/test/test.component.spec.ts')?.toString()).to.eql(
+      'const testFunction = jest.fn();\n' +
+        '\n' +
+        "import { ComponentFixture, TestBed } from '@angular/core/testing';\n" +
+        '\n' +
+        "import { TestComponent } from './test.component';\n" +
+        '\n' +
+        "jest.mock('src/app/utilities/decorators/selector.ts', () => ({\n" +
+        '  selectStoreSignal: testFunction\n' +
+        '}));\n' +
+        '\n' +
+        "describe('TestComponent', () => {\n" +
+        '  let component: TestComponent;\n' +
+        '  let fixture: ComponentFixture<TestComponent>;\n' +
+        '\n' +
+        '  beforeEach(async () => {\n' +
+        '    await TestBed.configureTestingModule({\n' +
+        '      imports: [TestComponent]\n' +
+        '    })\n' +
+        '    .compileComponents();\n' +
+        '\n' +
+        '    fixture = TestBed.createComponent(TestComponent);\n' +
+        '    component = fixture.componentInstance;\n' +
+        '    fixture.detectChanges();\n' +
+        '  });\n' +
+        '\n' +
+        "  it('should create', () => {\n" +
+        '    expect(component).toBeTruthy();\n' +
+        '  });\n' +
+        '});\n'
     );
   });
 
@@ -99,12 +142,12 @@ describe('frontend-component', () => {
       .runSchematicAsync('frontend-component', {name: 'test', service: true}, Tree.empty())
       .toPromise();
     expect(tree.files).to.eql([
+      '/test/test.component.spec.ts',
       '/test/test.component.ts',
       '/test/test.service.ts',
       '/test/test.styles.less',
       '/test/test.template.html'
     ]);
-    console.log(tree.read('/test/test.service.ts')?.toString());
     expect(tree.read('/test/test.service.ts')?.toString()).to.eql(
       "import {Injectable} from '@angular/core';\n" +
         '\n' +
@@ -121,6 +164,7 @@ describe('frontend-component', () => {
       .runSchematicAsync('frontend-component', {name: 'test', controller: true}, Tree.empty())
       .toPromise();
     expect(tree.files).to.eql([
+      '/test/test.component.spec.ts',
       '/test/test.component.ts',
       '/test/test.controller.ts',
       '/test/test.styles.less',
