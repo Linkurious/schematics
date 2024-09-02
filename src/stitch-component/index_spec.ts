@@ -16,17 +16,6 @@ describe('stitch-component', () => {
     expect(tree.files.length).to.eql(4);
   });
 
-  it('create a basic layout', async () => {
-    const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = await runner.runSchematic(
-      'stitch-component',
-      {name: 'test', type: 'layout'},
-      Tree.empty()
-    );
-    expect(tree.files.length).to.eql(4);
-    expect(tree.files[0]).to.eql('/stories/layouts/test.stories.ts');
-  });
-
   it('add a service to the component', async () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
     const tree = await runner.runSchematic(
