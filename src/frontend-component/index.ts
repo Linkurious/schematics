@@ -1,4 +1,4 @@
-import {normalize} from 'path';
+import {normalize, relative} from 'path';
 
 import {strings} from '@angular-devkit/core';
 import {
@@ -26,8 +26,12 @@ export interface FrontendSchema {
 export function frontendComponent(options: FrontendSchema): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const sourceTemplates = url(`./files`);
-    const workingDirectory = tree.root.path;
-    const elementPath = normalize(`./${workingDirectory}`);
+    // path from where the schematic is executed
+    const executionPath = process.env.INIT_CWD || '';
+    // Convert the execution path to a relative path from the workspace root
+    const relativePath = relative('./src', normalize(executionPath));
+
+    const elementPath = normalize(`src/${relativePath}`);
 
     const transformedSource: Source = apply(sourceTemplates, [
       options.service

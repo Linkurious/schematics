@@ -20,7 +20,6 @@ import {parseStoryTemplate} from '../utils/storyTemplate';
 
 export interface Schema {
   name: string;
-  type: 'component' | 'layout';
   service: boolean;
 }
 
@@ -36,11 +35,11 @@ function updatePublicAPI(tree: Tree, options: Schema, context: SchematicContext)
     return;
   }
   let sourceFile = buffer.toString();
-  let template = `\nexport {S${classify(options.name)}Component} from './${
-    options.type
-  }s/${camelize(options.name)}/component';`;
+  let template = `\nexport {S${classify(options.name)}Component} from './components/${camelize(
+    options.name
+  )}/component';`;
   if (options.service) {
-    template += `\nexport {S${classify(options.name)}Service} from './${options.type}s/${camelize(
+    template += `\nexport {S${classify(options.name)}Service} from './components/${camelize(
       options.name
     )}/service';\n`;
   } else {
@@ -55,7 +54,7 @@ function updatePublicAPI(tree: Tree, options: Schema, context: SchematicContext)
  */
 function createStory(tree: Tree, options: Schema): void {
   tree.create(
-    `./stories/${options.type}s/${camelize(options.name)}.stories.ts`,
+    `./stories/components/${camelize(options.name)}.stories.ts`,
     parseStoryTemplate(options)
   );
 }
@@ -63,7 +62,7 @@ function createStory(tree: Tree, options: Schema): void {
 export function stitchComponent(options: Schema): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const sourceTemplates = url(`./files`);
-    const elementPath = normalize(`./src/${options.type}s`);
+    const elementPath = normalize(`./src/components`);
 
     const transformedSource: Source = apply(sourceTemplates, [
       options.service ? noop() : filter((path) => !path.endsWith('service.ts')),
