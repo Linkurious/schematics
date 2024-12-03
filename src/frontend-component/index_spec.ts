@@ -97,16 +97,6 @@ describe('frontend-component', () => {
         '/*@import "@linkurious/stitch/assets/tokens/typography";  */\n' +
         '/*@import "@linkurious/stitch/assets/tokens/utils";  */\n' +
         '\n' +
-        ':host {\n' +
-        '  box-sizing: border-box;\n' +
-        '\n' +
-        '  *,\n' +
-        '  *:before,\n' +
-        '  *:after {\n' +
-        '    box-sizing: inherit;\n' +
-        '  }\n' +
-        '}\n' +
-        '\n' +
         '.l-test {\n' +
         '\n' +
         '}\n'
